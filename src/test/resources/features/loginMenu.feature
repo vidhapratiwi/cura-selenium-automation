@@ -15,4 +15,10 @@ Feature: cura login menu
       | John Doe | ThisIsNotAPassword | success |
       | xxxx     | ThisIsNotAPassword | failed  |
       | John Doe | xxxx               | failed  |
+      |          | ThisIsNotAPassword | failed  |
+      | John Doe |                    | failed  |
       |          |                    | failed  |
+      | john doe | ThisIsNotAPassword | success |
+      | JOHN DOE | ThisIsNotAPassword | success |
+      | John Doe | thisisnotapassword | failed  |
+      | John Doe | THISISNOTAPASSWORD | failed  |
