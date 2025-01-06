@@ -47,7 +47,7 @@ public class stepRadioButton extends env_target{
 
     @When("user selects {string} radio button")
     public void user_selects_radio_button(String option){
-        appointmentpage.selectRadioButton(option);
+        appointmentpage.selectProgramButton(option);
     }
 
     @Then("user verify {string} radio button is selected")

@@ -12,18 +12,17 @@ import pages.homePage;
 import pages.loginPage;
 import pages.appointmentPage;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-public class stepCheckbox extends  env_target{
+public class stepDatePicker extends env_target {
 
     WebDriver driver;
     homePage homepage;
     loginPage loginpage;
     appointmentPage appointmentpage;
 
-    @Given("user already on appointment page")
-    public void user_already_on_appointment_page(){
+    @Given("user on appointment page")
+    public void user_on_appointment_page(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -45,19 +44,14 @@ public class stepCheckbox extends  env_target{
         appointmentpage.validateAppointmentPage();
     }
 
-    @When("user click the checkbox")
-    public void user_click_the_checkbox(){
-        appointmentpage.selectReadmission();
+    @When("user select the date {string} from the calendar")
+    public void user_select_the_date_from_the_calendar(String date){
+        appointmentpage.selectDateFromCalendar(date);
     }
 
-    @Then("user verify it is checked")
-    public void user_verify_it_is_checked(){
-        assertTrue("checkbox should be selected", appointmentpage.isCheckboxSelected());
+    @Then("user verify the selected date is {string}")
+    public void user_verify_the_selected_date_is(String expectedDate){
+        assertEquals("The date is ", expectedDate, appointmentpage.getSelectedDate());
     }
 
-    //it's actually passed, but the assert is still failed
-    @And("user verify it is unchecked")
-    public void user_verify_it_is_unchecked(){
-        assertFalse("checkbox should be unchecked", !appointmentpage.isCheckboxSelected());
-    }
 }
