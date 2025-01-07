@@ -8,7 +8,7 @@ import io.cucumber.junit.Cucumber;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepDef",
-        tags = "@Login",
+        //tags = "@Login",
         plugin = {"pretty", "html:target/RegressionReport.html"}
 )
 public class runAll {

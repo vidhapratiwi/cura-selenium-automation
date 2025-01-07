@@ -17,6 +17,16 @@ public class historyPage {
     By noAppointmentText = By.xpath("//p[contains(text(), 'No appointment.')]");
     By goHomepageButton = By.xpath("//a[text()='Go to Homepage']");
 
+    By historyPanel = By.xpath("//div[@class='panel panel-info']");
+    By historyFacility = By.xpath("//p[@id='facility']");
+    By historyReadmission = By.xpath("//p[@id='hospital_readmission']");
+    By historyProgram = By.xpath("//p[@id='program']");
+    By historyComment = By.xpath("//p[@id='comment']");
+
+    By sidebarButton = By.id("menu-toggle");
+    By sidebarLogout = By.xpath("//a[text()='Logout']") ; ;
+
+
     public historyPage(WebDriver driver){
         this.driver = driver;
     }
@@ -36,4 +46,19 @@ public class historyPage {
         driver.findElement(goHomepageButton).click();
     }
 
+    public void historyDetails(){
+        driver.findElement(historyPanel).isDisplayed();
+
+        String facilityTitle = driver.findElement(historyFacility).getText();
+        Assert.assertEquals(facilityTitle, "Tokyo CURA Healthcare Center");
+
+        driver.findElement(historyReadmission).isDisplayed();
+        driver.findElement(historyProgram).isDisplayed();
+        driver.findElement(historyComment).isDisplayed();
+    }
+
+    public void logout(){
+        driver.findElement(sidebarButton).click();
+        driver.findElement(sidebarLogout).click();
+    }
 }

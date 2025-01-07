@@ -34,7 +34,10 @@ public class appointmentPage {
     By confirmationTitle = By.xpath("//h2[text()='Appointment Confirmation']");
     By confirmationMessage = By.xpath("//p[@class='lead' and text()='Please be informed that your appointment has been booked as following:']");
     By confirmationSummary = By.id("summary");
-    By goToHomepageButton = By.xpath("a[href=\"https://katalon-demo-cura.herokuapp.com/\"]");
+    By goToHomepageButton = By.xpath("//a[@class='btn btn-default' and text()='Go to Homepage']");
+
+    By sidebarButton = By.id("menu-toggle");
+    By sidebarHistory = By.xpath("//a[text()='History']") ;
 
 
     public appointmentPage(WebDriver driver){
@@ -42,7 +45,7 @@ public class appointmentPage {
     }
 
     public void validateAppointmentPage(){
-        Duration duration = Duration.ofSeconds(10);
+        Duration duration = Duration.ofSeconds(20);
         WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(
                 ExpectedConditions.visibilityOfAllElementsLocatedBy(appointmentSection)
@@ -159,6 +162,29 @@ public class appointmentPage {
         Assert.assertEquals("Appointment Confirmation", driver.findElement(confirmationTitle).getText());
     }
 
+    public void validateDateFieldValidationMessage(String expectedMessage){
+        boolean isDateFieldVisible = driver.findElement(dateField).isDisplayed();
 
+        if (isDateFieldVisible) {
+            String warningMessage = driver.findElement(dateField).getAttribute("validationMessage");
+
+            System.out.println("Warning message: " + warningMessage);
+
+            Assert.assertEquals("Validation message is Incorrect!", expectedMessage, warningMessage);
+
+        } else{
+            throw new AssertionError("Date field is not visible!");
+        }
+
+    }
+
+    public void navigateHistoryPage(){
+        driver.findElement(sidebarButton).click();
+        driver.findElement(sidebarHistory).click();
+    }
+
+    public void clickGoToHomepageButton(){
+        driver.findElement(goToHomepageButton).click();
+    }
 
 }
