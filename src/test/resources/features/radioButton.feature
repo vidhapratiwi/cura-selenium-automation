@@ -1,6 +1,6 @@
 Feature: Radio Button Functionality
-@RadioButton
 
+  @RadioButton @Form
   Scenario: verify radio button functionality
     Given user is on the appointment page
     When user selects "Medicare" radio button

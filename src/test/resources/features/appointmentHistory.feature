@@ -2,7 +2,7 @@ Feature: appointment history
 
   @Validation @History
   Scenario: verify appointment is recorded in history page
-    Given user has already made appointment and on confirmartion page
+    Given user has already made appointment and on confirmation page
     When user navigate to history page
     Then verify the appointment should be displayed
 

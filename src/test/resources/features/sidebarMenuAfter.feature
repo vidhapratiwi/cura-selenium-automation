@@ -1,4 +1,4 @@
-Feature: sidebar menu after login
+Feature: sidebar menu - after login
   @Sidebar @Menu @After
   Scenario:
     Given user already login and on homepage

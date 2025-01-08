@@ -1,6 +1,6 @@
-Feature: footer links
-  @FooterLinks
+Feature: footer links functionality
 
+  @Footer
   Scenario Outline:
     Given user in homepage
     When user click <linkName> link in the footer

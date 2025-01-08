@@ -1,5 +1,5 @@
 Feature: checkbox functionality
-  @Checkbox
+  @Checkbox @Form
   Scenario: verify hospital readmission checkbox functionality
     Given user already on appointment page
     When user click the checkbox
