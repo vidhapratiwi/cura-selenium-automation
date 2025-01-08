@@ -29,14 +29,13 @@ Feature:  appointment creation
     And user click the book appointment button
     Then warning message to fill the required field displayed
 
-#  code is still error for past date
-#  @Appointment @Negative @PastDate
-#  Scenario: user make failed appointment by filling a past date
-#    Given user already on the appointment page
-#    When user select visit date "30/03/2024"
-#    And user verify selected date "30/03/2024"
-#    And user click the book appointment button
-#    Then warning message to fill the required field displayed
+  @Appointment @Negative @PastDate
+  Scenario: user make failed appointment by filling a past date
+    Given user already on the appointment page
+    When user select visit date "30/03/2024"
+    And user verify selected date "30/03/2024"
+    And user click the book appointment button
+    Then warning message to fill the required field displayed
 
   @Appointment @Homepage
   Scenario: verify "go to homepage" button working properly

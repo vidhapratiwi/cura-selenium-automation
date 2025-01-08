@@ -1,5 +1,5 @@
-Feature: sidebar menu - history
-  @Sidebar @Menu @History
+Feature: sidebar - history
+  @Sidebar @History
   Scenario:
     Given user already opened sidebar menu
     When user click history

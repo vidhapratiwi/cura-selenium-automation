@@ -1,4 +1,4 @@
-Feature: cura login
+Feature: user login verification
   @Login
   Scenario Outline: user login home
     Given user go to url

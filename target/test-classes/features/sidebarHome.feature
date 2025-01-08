@@ -1,5 +1,5 @@
-Feature: sidebar menu - home
-  @Sidebar @Menu @Home
+Feature: sidebar - home
+  @Sidebar @Home
   Scenario:
     Given user already opened the sidebar menu
     When user click home

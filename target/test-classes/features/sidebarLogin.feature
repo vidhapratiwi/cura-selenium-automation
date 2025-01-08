@@ -1,5 +1,5 @@
-Feature: cura login menu
-  @SidebarLogin
+Feature: sidebar - login
+  @Sidebar @Login
   Scenario: user login menu
     Given user go to url link
     When click the side bar menu

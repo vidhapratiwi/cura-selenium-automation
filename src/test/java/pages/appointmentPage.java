@@ -96,8 +96,11 @@ public class appointmentPage {
         return  dropdown.getFirstSelectedOption().getText();
     }
 
+
+    //-------------------- date picker ---------------------------------
+    //------------------baru bisa date now to future, belum bisa pilih past
+
     public void selectDateFromCalendar(String date){
-        //------------------baru bisa date now to future, belum bisa pilih past
 
         //split day, month, year
         String[] dateParts = date.split("/");
@@ -112,11 +115,15 @@ public class appointmentPage {
         //find selected month
         while (!monthYearElement.getText().contains(year) ||
                 !monthYearElement.getText().contains(getMonthName(Integer.parseInt(month)))) {
-            driver.findElement(nextButton).click();
+            if (Integer.parseInt(year) > Integer.parseInt(monthYearElement.getText().split(" ")[1])) {
+                driver.findElement(nextButton).click();  // Navigate forward
+            } else {
+                driver.findElement(previousButton).click();  // Navigate backward
+            }
         }
 
         //select date based on input text
-        String dayXPath = "//td[text()='" + day + "']";
+        String dayXPath = "//td[not(contains(@class, 'old')) and text()='" + day + "']";
         driver.findElement(By.xpath(dayXPath)).click();
     }
 
@@ -131,6 +138,8 @@ public class appointmentPage {
         WebElement dateInput = driver.findElement(dateField);
         return dateInput.getAttribute("value");
     }
+
+    //--------------------- end date picker ----------------------------------------------
 
     public void enterComment(String comment){
         driver.findElement(commentTextbox).sendKeys(comment);
