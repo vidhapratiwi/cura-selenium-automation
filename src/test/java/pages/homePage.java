@@ -119,6 +119,10 @@ public class homePage {
         driver.findElement(sidebarLogin).click();
     }
 
+    public void clickSidebarLogin(){
+        driver.findElement(sidebarLogin).click();
+    }
+
 
 
 

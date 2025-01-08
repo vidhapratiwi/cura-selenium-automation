@@ -8,8 +8,9 @@ import io.cucumber.junit.Cucumber;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepDef",
-        //tags = "@Login",
-        plugin = {"pretty", "html:target/RegressionReport.html"}
+        //tags = "@SidebarLogin",
+        plugin = {"pretty", "html:target/RegressionReport.html"},
+        monochrome = true
 )
 public class runAll {
 }
